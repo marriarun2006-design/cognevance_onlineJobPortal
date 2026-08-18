@@ -1,1 +1,24 @@
+{% extends "base.html" %}{% block content %}
+{{session.name}}'s Dashboard
+{% if session.role=='employer' %}Post Job
+Your Jobs
+{% for j in jobs %}
+{{j.title}}
+{{j.company}} · {{j.location}}
 
+{% endfor %}
+Applications
+{% for a in applications %}
+Job ID: {{a.job_id}} | Applicant ID: {{a.applicant_id}} | Status: {{a.status}}
+
+
+Applied
+Update
+{% endfor %} {% else %}
+Your Applications
+{% for a in applications %}
+Job ID {{a.job_id}} — {{a.status}}
+{% else %}
+No applications yet.
+
+{% endfor %}{% endif %}{% endblock %}
