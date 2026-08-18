@@ -1,1 +1,20 @@
+{% extends "base.html" %}{% block title %}Find Jobs{% endblock %}{% block content %}
+Find your next opportunity
+{{q}}
+Search
+{% for job in jobs %}
+{{job.title}}
+{{job.company}} · {{job.location}}
 
+{{job.description}}
+
+Skills: {{job.skills}}
+
+{% if session.get('role')=='applicant' %}
+Resume link (optional)
+Apply
+{% endif %}
+{% else %}
+No jobs found.
+
+{% endfor %}{% endblock %}
