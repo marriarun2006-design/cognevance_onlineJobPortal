@@ -1,1 +1,4 @@
-
+JobPortal{% if session.get('user_id') %}DashboardProfileLogout{% else %}LoginRegister{% endif %}
+{% with messages=get_flashed_messages() %}{% for m in messages %}
+{{m}}
+{% endfor %}{% endwith %}{% block content %}{% endblock %}
